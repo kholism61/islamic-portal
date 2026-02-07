@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artikel Tersimpan</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/bookmark.css">
+   <link rel="stylesheet" href="css/article.css">
+</head>
+<body>
+
+<header class="navbar">
+  <a href="index.html" class="nav-icon" title="Beranda">🏠</a>
+  <h1 class="logo">Bookmark ku ⭐</h1>
+  <button id="themeToggle" class="theme-toggle">🌙</button>
+</header>
+
+<main class="bookmark-container">
+<button id="exportPdfBtn" class="bookmark-btn">
+  📄 Export ke PDF
+</button>
+<button id="exportWordBtn" class="bookmark-btn">
+  📝 Export ke Word
+</button>
+<button id="clearBookmarks" class="clear-bookmark">
+  🗑️ Hapus Semua
+</button>
+
+<div class="bookmark-search">
+  <input
+    type="text"
+    id="bookmarkSearch"
+    placeholder="Cari bookmark…"
+  />
+</div>
+
+<div id="bookmarkNotFound" class="not-found" style="display:none;">
+  ❌ Bookmark tidak ditemukan
+</div>
+
+
+  <!-- LIST BOOKMARK (DIISI JS) -->
+  <div id="bookmark-list"></div>
+
+  <!-- EMPTY STATE -->
+  <p id="bookmark-empty" class="bookmark-empty" style="display:none;">
+    ⭐ Belum ada artikel yang disimpan
+  </p>
+
+</main>
+
+<section class="prefooter">
+  <div class="prefooter-overlay"></div>
+
+  <div class="prefooter-inner">
+
+    <!-- KOLOM 1 -->
+    <div class="prefooter-col">
+      <h4>Mimbar Ilmu Keislaman</h4>
+      <p>
+        Portal kajian Islam yang menghadirkan analisis ilmiah,
+        pemikiran kritis, dan dialog keislaman dalam konteks modern.
+      </p>
+    </div>
+
+    <!-- KOLOM 2 -->
+    <div class="prefooter-col">
+      <h4>Kajian Utama</h4>
+      <ul>
+        <li><a href="index.html?filter=fiqh">Fiqh & Ushul Fiqh</a></li>
+<li><a href="index.html?filter=hadis">Hadis & Studi Sanad</a></li>
+<li><a href="index.html?filter=pemikiran">Pemikiran Islam</a></li>
+<li><a href="index.html?filter=politik">Islam & Negara</a></li>
+<li><a href="index.html?filter=kontemporer">Isu Kontemporer</a></li>
+      </ul>
+    </div>
+
+    <!-- KOLOM 3 -->
+    <div class="prefooter-col">
+      <h4>Fitur</h4>
+      <ul>
+        <li>Artikel Pilihan</li>
+        <li>Bookmark Artikel</li>
+        <li>Pencarian Cerdas</li>
+        <li>Mode Baca</li>
+        <li>Multi Bahasa</li>
+      </ul>
+    </div>
+
+    <!-- KOLOM 4 -->
+    <div class="prefooter-col">
+      <h4>Catatan</h4>
+      <p class="prefooter-note">
+        Seluruh konten disajikan untuk tujuan edukasi dan kajian ilmiah,
+        bukan sebagai fatwa atau klaim kebenaran tunggal.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- SOSIAL MEDIA (TENGAH BAWAH) -->
+   <div class="prefooter-social">
+    <a href="https://wa.me/6282124305278" aria-label="WhatsApp" target="_blank">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="https://instagram.com/nurcholism51" aria-label="Instagram" target="_blank">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+   <a href="https://www.threads.net/@nurcholism51" aria-label="Threads" target="_blank">
+  <i class="fa-brands fa-threads"></i>
+</a>
+    <a href="mailto:nurcholism51@gmail.com" aria-label="Email">
+      <i class="fa-regular fa-envelope"></i>
+    </a>
+  </div>
+</section>
+
+
+  <footer class="site-footer">
+  © 2026 Mimbar Ilmu Keislaman — Seluruh hak cipta dilindungi. Konten disajikan untuk tujuan edukasi dan kajian ilmiah.
+</footer>
+
+<div id="toast" class="toast"></div>
+<script src="js/data.js"></script>
+<script src="js/article.js"></script>
+<script src="js/bookmark.js"></script>
+<!-- TOAST NOTIFICATION -->
+<div id="toast" class="toast"></div>
+
+</body>
+</html>

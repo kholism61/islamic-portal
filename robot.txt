@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://httpsjovial-ganache-3b20a0.my.id/sitemap.xml

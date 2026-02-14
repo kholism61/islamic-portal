@@ -2987,18 +2987,6 @@ body.dark .card.is-popular h3 {
   padding: 0 3px;
 }
 
-.prayer-box {
-  background: linear-gradient(
-    180deg,
-    rgba(20, 40, 70, 0.95),
-    rgba(10, 25, 45, 0.95)
-  );
-  border-radius: 22px;
-  padding: 26px 28px;
-  box-shadow: 0 20px 45px rgba(0,0,0,0.35);
-  position: relative;
-}
-
 .prayer-title {
   display: flex;
   align-items: center;
@@ -4890,4 +4878,51 @@ body.dark .stat-box span {
   z-index: 22;
   display: inline-block;
   pointer-events: auto;
+
+}
+
+.prayer-box {
+  position: relative;
+  background: linear-gradient(145deg, #0f172a, #1e3a8a);
+  border-radius: 20px;
+  padding: 25px;
+  color: white;
+  overflow: hidden;
+
+  /* efek glow biru */
+  box-shadow:
+    0 0 20px rgba(59, 130, 246, 0.4),
+    0 0 40px rgba(59, 130, 246, 0.25),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+/* efek kilap bergerak */
+.prayer-box::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+
+  background: linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 60%
+  );
+
+  transform: rotate(25deg);
+  animation: shineMove 6s linear infinite;
+  pointer-events: none;
+}
+
+/* animasi kilap */
+@keyframes shineMove {
+  0% {
+    transform: translateX(-100%) rotate(25deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(25deg);
+  }
 }

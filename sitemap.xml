@@ -21,4 +21,12 @@
     <loc>https://islamic-portal.vercel.app/donasi.html</loc>
   </url>
 
+  <url>
+    <loc>https://islamic-portal.vercel.app/privacy.html</loc>
+  </url>
+
+  <url>
+    <loc>https://islamic-portal.vercel.app/disclaimer.html</loc>
+  </url>
+
 </urlset>

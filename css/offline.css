@@ -1,0 +1,340 @@
+/* =========================
+   OFFLINE PAGE STYLE
+========================= */
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.container h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: #0f172a;
+}
+
+/* Kartu artikel offline */
+.offline-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  border-left: 5px solid #1e3a8a;
+  transition: 0.25s ease;
+}
+
+.offline-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.offline-card h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+  color: #0f172a;
+}
+
+.offline-card p {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+/* Tombol aksi */
+.offline-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.offline-actions a,
+.offline-actions button {
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+/* tombol baca */
+.offline-actions a {
+  background: #1e3a8a;
+  color: white;
+}
+
+.offline-actions a:hover {
+  background: #1e40af;
+}
+
+/* tombol hapus */
+.offline-actions button {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.offline-actions button:hover {
+  background: #e2e8f0;
+}
+
+/* kondisi kosong */
+.offline-empty {
+  text-align: center;
+  margin-top: 80px;
+  color: #64748b;
+  font-size: 15px;
+}
+
+/* =========================
+   BACK BUTTON (OFFLINE PAGE)
+   ========================= */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 20px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(6px);
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateX(-2px);
+}
+
+.back-btn:active {
+  transform: scale(0.92);
+}
+
+/* SEARCH OFFLINE */
+.offline-search {
+  width: 100%;
+  max-width: 420px;
+  padding: 12px 16px;
+  margin: 16px 0 28px;
+  border-radius: 12px;
+  border: 1px solid #dcdcdc;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.offline-search:focus {
+  border-color: #1e3a8a;
+  box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.15);
+}
+
+.offline-progress {
+  font-size: 13px;
+  color: #2563eb;
+  font-weight: 600;
+  margin: 4px 0 10px;
+}
+
+.offline-thumb {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.offline-progress {
+  margin-top: 8px;
+}
+
+.offline-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.offline-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #22c55e);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.offline-progress-text {
+  font-size: 12px;
+  color: #64748b;
+}
+
+body.dark .offline-progress-bar {
+  background: #1e293b;
+}
+
+body.dark .offline-progress-text {
+  color: #94a3b8;
+}
+
+/* ===== TOOLBAR ===== */
+.offline-tools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 20px 0;
+}
+
+.offline-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, #2563eb, #0ea5e9);
+  color: white;
+}
+
+.offline-actions-top {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* tombol hapus */
+.btn-danger {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-danger:hover {
+  opacity: 0.9;
+}
+
+/* progress bar */
+.offline-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 6px 0;
+}
+
+.offline-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  border-radius: 999px;
+}
+
+/* ===============================
+   OFFLINE ACTIONS TOP (HEADER)
+================================ */
+.offline-actions-top {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+/* dropdown sort */
+#sort-select {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* tombol download semua */
+#download-all {
+  background: linear-gradient(135deg, #2563eb, #0ea5e9);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+  transition: 0.25s;
+}
+
+#download-all:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.35);
+}
+
+/* tombol hapus semua */
+#delete-all {
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  box-shadow: 0 8px 18px rgba(239, 68, 68, 0.25);
+}
+
+/* mobile: stack ke bawah */
+@media (max-width: 768px) {
+  .offline-tools {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .offline-actions-top {
+    justify-content: space-between;
+  }
+}
+
+/* =====================
+   OFFLINE STATS
+===================== */
+.offline-stats {
+  display: flex;
+  gap: 16px;
+  margin: 20px 0 30px;
+  flex-wrap: wrap;
+}
+
+.offline-stat-card {
+  flex: 1;
+  min-width: 140px;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: white;
+  padding: 18px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+}
+
+.offline-stat-card span {
+  display: block;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.offline-stat-card small {
+  opacity: 0.9;
+}

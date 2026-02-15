@@ -1502,3 +1502,14 @@ body.dark .prefooter-social a:hover {
   opacity: 0.8;
 }
 
+.faq-update-info {
+  background: linear-gradient(135deg, #eaf2ff, #f6f9ff);
+  border: 1px solid #cddfff;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #1a2a4a;
+  box-shadow: 0 6px 18px rgba(0, 70, 180, 0.08);
+}

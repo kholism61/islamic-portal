@@ -318,6 +318,12 @@ if (articlesContainer && typeof articlesData !== "undefined") {
       ? `<img src="${article.thumbnail}" class="thumb" alt="${article.judul}">`
       : `<img src="assets/images/default.jpg" class="thumb" alt="default">`;
 
+     const tanggal = new Date(article.tanggal).toLocaleDateString("id-ID", {
+  day: "numeric",
+  month: "long",
+  year: "numeric"
+});
+
     card.innerHTML = `
       <span class="lang-badge">${langIcon}</span>
       ${thumbHtml}
@@ -333,6 +339,7 @@ if (articlesContainer && typeof articlesData !== "undefined") {
   : article.judul}</h3>
       <p>${article.isi.replace(/<[^>]*>/g, "").slice(0, 100)}...</p>
       <a href="article.html?id=${id}" class="read-more">Baca Selengkapnya</a>
+       <span class="card-date">${tanggal}</span>
     `;
 
     articlesContainer.appendChild(card);
@@ -436,6 +443,11 @@ if (isHomePage && popularContainer && typeof articlesData !== "undefined") {
       const thumb = article.thumbnail
         ? article.thumbnail
         : "assets/images/default.jpg";
+       const tanggal = new Date(article.tanggal).toLocaleDateString("id-ID", {
+  day: "numeric",
+  month: "long",
+  year: "numeric"
+});
 
       card.innerHTML = `
         <span class="lang-badge">${langIcon}</span>
@@ -445,6 +457,7 @@ if (isHomePage && popularContainer && typeof articlesData !== "undefined") {
         <h3>${article.judul}</h3>
         <p>${article.isi.replace(/<[^>]*>/g, "").slice(0, 120)}...</p>
         <a href="article.html?id=${id}" class="read-more">Baca Selengkapnya</a>
+         <span class="card-date">${tanggal}</span>
       `;
 
       popularContainer.appendChild(card);
@@ -2091,4 +2104,5 @@ updateReadingStreak();
       <p>${item.data.tanggal || ""}</p>
     </a>
   `).join("");
+
 })();

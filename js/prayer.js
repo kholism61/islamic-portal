@@ -219,6 +219,20 @@ if (cityEl) {
 /* =========================
    FALLBACK
 ========================= */
+function loadFallbackPrayerTimes() {
+  prayerTimes = {
+    fajr: "04:45",
+    dhuhr: "12:03",
+    asr: "15:26",
+    maghrib: "18:12",
+    isha: "19:25"
+  };
+  updatePrayerUI();
+}
+
+/* =========================
+   UPDATE UI
+========================= */
 function updatePrayerUI() {
   Object.entries(prayerTimes).forEach(([name, time]) => {
     const el = document.getElementById(`time-${name}`);
@@ -248,21 +262,6 @@ function updatePrayerUI() {
   }
 
   setPrayerTheme(currentPrayer);
-}
-
-
-
-/* =========================
-   UPDATE UI
-========================= */
-function updatePrayerUI() {
-  Object.entries(prayerTimes).forEach(([name, time]) => {
-    const el = document.getElementById(`time-${name}`);
-    if (el) el.textContent = time;
-  });
-
-  highlightActivePrayer();
-  updateClockAndCountdown();
 }
 
 /* =========================
@@ -683,4 +682,5 @@ function setPrayerTheme(prayer) {
   if (prayer === "asr") box.classList.add("prayer-ashar");
   if (prayer === "maghrib") box.classList.add("prayer-maghrib");
   if (prayer === "isha") box.classList.add("prayer-isya");
+
 }

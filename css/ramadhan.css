@@ -789,16 +789,11 @@ body.dark .ramadhan-navbar {
   }
 }
 
-/* =========================
-   FIX PRAYER MINI MOBILE
-   ========================= */
+/* ======================
+   HIDE PRAYER MINI MOBILE
+====================== */
 @media (max-width: 768px) {
-
   .prayer-mini {
-    position: relative;
-    margin-top: 6px;
-    width: 100%;
-    text-align: center;
+    display: none !important;
   }
-
 }

@@ -763,4 +763,35 @@ function setPrayerTheme(prayer) {
   if (prayer === "asr") box.classList.add("prayer-ashar");
   if (prayer === "maghrib") box.classList.add("prayer-maghrib");
   if (prayer === "isha") box.classList.add("prayer-isya");
+
+}
+
+loadHomePrayerTimes();
+
+async function loadHomePrayerTimes() {
+  try {
+    const pos = await new Promise((res, rej) =>
+      navigator.geolocation.getCurrentPosition(res, rej)
+    );
+
+    const lat = pos.coords.latitude;
+    const lon = pos.coords.longitude;
+
+    const res = await fetch(
+      `https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=11`
+    );
+
+    const data = await res.json();
+    const t = data.data.timings;
+
+    document.getElementById("home-imsak").textContent =
+      t.Imsak.slice(0, 5);
+    document.getElementById("home-fajr").textContent =
+      t.Fajr.slice(0, 5);
+    document.getElementById("home-maghrib").textContent =
+      t.Maghrib.slice(0, 5);
+
+  } catch (e) {
+    console.log("Widget gagal memuat lokasi");
+  }
 }

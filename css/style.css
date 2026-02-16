@@ -5140,4 +5140,35 @@ body.dark .stat-box span {
 .ramadhan-mode .prayer-progress-fill {
   background: linear-gradient(90deg, #ffd166, #ff9f1c);
   box-shadow: 0 0 12px rgba(255, 200, 80, 0.6);
+
+}
+
+.home-prayer-widget {
+  padding: 30px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.widget-card {
+  display: flex;
+  gap: 20px;
+  background: linear-gradient(135deg, #1e3a8a, #1e40af);
+  padding: 20px 25px;
+  border-radius: 16px;
+  color: white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.widget-card div {
+  text-align: center;
+  min-width: 80px;
+}
+
+.widget-card small {
+  opacity: 0.8;
+}
+
+.widget-card h3 {
+  margin: 5px 0 0;
+  font-size: 1.4rem;
 }

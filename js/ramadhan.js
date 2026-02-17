@@ -250,10 +250,10 @@ if (duaBox && duaText) {
   if (hour >= 2 && hour < 5) {
     duaText.innerHTML = `
       <div class="dua-arab">
-        وَبِصَوْمِ غَدٍ نَوَيْتُ مِنْ شَهْرِ رَمَضَانَ
+        نَوَيْتُ صَوْمَ غَدٍ عَنْ أَدَاءِ فَرْضِ شَهْرِ رَمَضَانَ هَذِهِ السَّنَةِ لِلّٰهِ تَعَالَى
       </div>
       <div class="dua-arti">
-        "Aku berniat berpuasa esok hari untuk menunaikan fardhu di bulan Ramadhan."
+        "Aku niat berpuasa esok hari untuk menunaikan kewajiban bulan Ramadhan tahun ini karena Allah Ta‘ala."
       </div>
     `;
   }
@@ -473,4 +473,5 @@ function autoNightMode() {
   if (nowMin >= ishaMin) {
     document.body.classList.add("dark");
   }
+
 }

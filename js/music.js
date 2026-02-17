@@ -17,7 +17,9 @@ const playlistLight = [
 ];
 
 const playlistDark = [
-  "https://download.quranicaudio.com/quran/tawfeeq_bin_saeed_as-sawali7/018.mp3",
+  "https://download.quranicaudio.com/quran/sodais_and_shuraim/004.mp3",
+  "https://download.quranicaudio.com/quran/maher_almu3aiqly/year1440/005.mp3",
+  "https://download.quranicaudio.com/quran/maher_almu3aiqly/year1440/028.mp3",
   "https://download.quranicaudio.com/quran/yasser_ad-dussary/016.mp3"
 ];
 
@@ -102,4 +104,5 @@ const playlistDark = [
   loadSong();
   if (isPlaying) playMusic();
 });
+
 

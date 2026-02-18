@@ -2136,19 +2136,18 @@ if (langBtn && langDropdown) {
 // SET LANGUAGE VIA GOOGLE TRANSLATE
 // =====================
 window.setLang = function (lang) {
+
   localStorage.setItem("lang", lang);
 
-  const url = window.location.href;
-
-  // kalau bahasa Indonesia → langsung reload normal
   if (lang === "id") {
+    // reset ke bahasa asli
+    document.cookie = "googtrans=/id/id; path=/";
     location.reload();
     return;
   }
 
-  // selain ID → buka Google Translate
-  window.open(
-    `https://translate.google.com/translate?sl=auto&tl=${lang}&u=${encodeURIComponent(url)}`,
-    "_self"
-  );
+  const newLang = `/id/${lang}`;
+  document.cookie = `googtrans=${newLang}; path=/`;
+
+  location.reload();
 };

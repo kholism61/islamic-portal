@@ -1129,32 +1129,38 @@ body.dark .rec-cat {
 }
 
 /* =========================
-   MOBILE FIX ARTICLE PAGE
+   MOBILE FULL WIDTH SAFE
 ========================= */
 @media (max-width: 768px) {
 
-  html, body {
+  /* jangan sentuh html/body */
+  body {
     overflow-x: hidden;
-    width: 100%;
   }
 
-  /* Container utama artikel */
+  /* container utama artikel */
   .article-content {
     width: 100%;
     max-width: 100%;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding: 16px;
     box-sizing: border-box;
   }
 
-  /* Semua elemen ikut lebar layar */
-  img,
-  video,
-  iframe,
-  table,
-  pre,
-  code {
+  /* semua media menyesuaikan layar */
+  .article-content img,
+  .article-content video,
+  .article-content iframe,
+  .article-content table,
+  .article-content pre,
+  .article-content code {
     max-width: 100%;
+    height: auto;
+  }
+
+  /* teks lebih nyaman dibaca */
+  #isi-artikel {
+    font-size: 16px;
+    line-height: 1.8;
   }
 
 }

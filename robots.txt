@@ -2,4 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://islamic-portal.vercel.app/sitemap.xml
-

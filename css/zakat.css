@@ -936,3 +936,15 @@ body.dark footer {
   color: #94a3b8;
 }
 
+/* AUTO RTL SAAT GOOGLE SET ARAB */
+html[lang="ar"] body {
+  direction: rtl;
+  text-align: right;
+}
+
+html[lang="ar"] .hero,
+html[lang="ar"] .navbar,
+html[lang="ar"] .quick-menu,
+html[lang="ar"] .article-content {
+  text-align: right;
+}

@@ -1164,3 +1164,13 @@ body.dark .rec-cat {
   }
 
 }
+
+.article-content[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+.article-content[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+}

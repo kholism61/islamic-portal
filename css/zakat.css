@@ -69,12 +69,6 @@ main {
   justify-content: space-between;
 }
 
-.logo {
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: white;
-}
-
 .nav-links {
   display: flex;
   gap: 22px;
@@ -660,7 +654,7 @@ body.dark .zakat-history {
 }
 
 .logo img {
-  width: 192px;
+  width: 230px;
   height: auto;
   display: block;
 }
@@ -948,3 +942,4 @@ html[lang="ar"] .quick-menu,
 html[lang="ar"] .article-content {
   text-align: right;
 }
+

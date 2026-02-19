@@ -809,4 +809,18 @@ body.dark .not-found {
   border-radius: 14px;
   font-weight: 600;
   margin-bottom: 30px;
+
+}
+
+/* AUTO RTL SAAT GOOGLE SET ARAB */
+html[lang="ar"] body {
+  direction: rtl;
+  text-align: right;
+}
+
+html[lang="ar"] .hero,
+html[lang="ar"] .navbar,
+html[lang="ar"] .quick-menu,
+html[lang="ar"] .article-content {
+  text-align: right;
 }

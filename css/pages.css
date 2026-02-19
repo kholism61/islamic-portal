@@ -1515,3 +1515,15 @@ body.dark .prefooter-social a:hover {
   box-shadow: 0 6px 18px rgba(0, 70, 180, 0.08);
 }
 
+/* AUTO RTL SAAT GOOGLE SET ARAB */
+html[lang="ar"] body {
+  direction: rtl;
+  text-align: right;
+}
+
+html[lang="ar"] .hero,
+html[lang="ar"] .navbar,
+html[lang="ar"] .quick-menu,
+html[lang="ar"] .article-content {
+  text-align: right;
+}

@@ -587,8 +587,8 @@ if (lastDay !== todayKey) {
 const ayatList = [
   {
     global: 2,
-    arab: "الم",
-    arti: "Alif Lam Mim."
+    arab: "الم ذَٰلِكَ ٱلْكِتَـٰبُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِّلْمُتَّقِينَ",
+    arti: "Alif Lam Mim Kitab (Alquran) ini tidak ada keraguan padanya; petunjuk bagi mereka yang bertakwa."
   },
   {
     global: 3,
@@ -797,4 +797,93 @@ async function loadHomePrayerTimes() {
   } catch (e) {
     console.log("Widget gagal memuat lokasi");
   }
+
 }
+
+const openBtn = document.getElementById("open-quran");
+const quranPopup = document.getElementById("quran-popup");
+const closeBtn = document.getElementById("quran-close");
+const quranBody = document.getElementById("quran-body");
+const juzSelect = document.getElementById("juz-select");
+const translationSelect = document.getElementById("translation-select");
+
+let currentTranslation = 33; // default Indonesia
+
+// isi juz dropdown
+for (let i = 1; i <= 30; i++) {
+  const opt = document.createElement("option");
+  opt.value = i;
+  opt.textContent = "Juz " + i;
+  juzSelect.appendChild(opt);
+}
+
+// buka popup
+openBtn.addEventListener("click", () => {
+  quranPopup.classList.add("active");
+  loadJuz(1);
+});
+
+// tutup popup
+closeBtn.addEventListener("click", () => {
+  quranPopup.classList.remove("active");
+});
+
+// ganti juz
+juzSelect.addEventListener("change", () => {
+  loadJuz(juzSelect.value);
+});
+
+// ganti bahasa
+translationSelect.addEventListener("change", () => {
+  currentTranslation = translationSelect.value;
+  loadJuz(juzSelect.value);
+});
+
+// load juz dengan terjemahan
+async function loadJuz(juzNumber) {
+  quranBody.innerHTML = `<div class="loading">Memuat...</div>`;
+
+  try {
+    const res = await fetch(
+      `https://api.quran.com/api/v4/quran/verses/uthmani?juz_number=${juzNumber}`
+    );
+
+    const data = await res.json();
+    const verses = data.verses;
+
+    // ambil terjemahan
+    const transRes = await fetch(
+      `https://api.quran.com/api/v4/quran/translations/${currentTranslation}?juz_number=${juzNumber}`
+    );
+
+    const transData = await transRes.json();
+    const translations = transData.translations;
+
+    quranBody.innerHTML = "";
+
+    verses.forEach((verse, index) => {
+      const div = document.createElement("div");
+      div.classList.add("ayah");
+
+      div.innerHTML = `
+        <div class="ayah-number">
+          ${verse.verse_key}
+        </div>
+
+        <div class="arab">
+          ${verse.text_uthmani}
+        </div>
+
+        <div class="translation">
+          ${translations[index].text}
+        </div>
+      `;
+
+      quranBody.appendChild(div);
+    });
+
+  } catch (err) {
+    quranBody.innerHTML = "Gagal memuat Qur'an.";
+  }
+}
+

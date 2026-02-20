@@ -16,9 +16,22 @@ html, body {
 
 body {
   font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(135deg, #0f172a, #1e3a8a);
+  margin: 0;
   min-height: 100vh;
   color: #111;
+
+  background:
+    radial-gradient(circle at 30% 20%, rgba(59,130,246,0.25), transparent 40%),
+    radial-gradient(circle at 70% 80%, rgba(30,64,175,0.35), transparent 50%),
+    linear-gradient(
+      180deg,
+      #0f172a 0%,
+      #1e293b 40%,
+      #1e3a8a 70%,
+      #1d4ed8 100%
+    );
+
+  background-attachment: fixed;
 }
 
 
@@ -895,4 +908,5 @@ body.dark #doa-harian {
   color: #cbd5e1;
   font-size: 16px;
   line-height: 1.8;
+
 }

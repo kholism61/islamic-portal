@@ -659,6 +659,9 @@ dan refleksi pemikiran kontemporer
       <span id="prayer-status" class="prayer-status"></span>
     </div>
 
+    <button id="open-quran">📖 Baca Qur’an</button>
+
+
     <!-- CLOCK + NEXT -->
     <div class="prayer-meta">
       <span id="current-clock">--:--</span>
@@ -960,6 +963,30 @@ function googleTranslateElementInit() {
 
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-</body>
+  <div class="quran-popup" id="quran-popup">
+  <div class="quran-container">
 
+    <div class="quran-header">
+      <h2>📖 Baca Al-Qur'an</h2>
+
+      <select id="translation-select">
+  <option value="33">Indonesia</option>
+  <option value="20">English</option>
+</select>
+
+      <div class="quran-header-controls">
+        <select id="juz-select"></select>
+        <button id="quran-close">✕</button>
+      </div>
+    </div>
+
+    <div class="quran-body" id="quran-body">
+      <div class="loading">Memuat...</div>
+    </div>
+
+  </div>
+</div>
+
+</body>
 </html>
+

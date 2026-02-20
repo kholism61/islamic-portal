@@ -1,0 +1,358 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: #f4f6f8;
+}
+
+.site-footer {
+  background: #0b2c5f;
+  text-align: center;
+  padding: 25px 15px;
+  font-size: 15px;
+  color: #e7eaed;
+  font-family: "Source Serif 4", serif;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #cbd5e1;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.footer-copy {
+  opacity: 0.8;
+}
+
+/* =========================
+   NAVBAR GLOBAL
+========================= */
+.main-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(135deg, #0f2a5f, #1e3a8a);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  gap: 22px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  opacity: 0.9;
+  transition: 0.2s;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+}
+
+.theme-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.zakat-cta {
+  padding: 70px 20px;
+  background: linear-gradient(135deg, #0b2c5f, #1e3a8a);
+  color: white;
+  text-align: center;
+}
+
+.cta-box {
+  max-width: 700px;
+  margin: auto;
+}
+
+.cta-box h2 {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.cta-box p {
+  opacity: 0.9;
+  margin-bottom: 25px;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.cta-primary {
+  background: #22c55e;
+  color: white;
+  padding: 12px 26px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.cta-secondary {
+  background: rgba(255,255,255,0.15);
+  color: white;
+  padding: 12px 26px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+/* =========================
+   WRAPPER TABLE ZAKAT INFO
+========================= */
+.table-wrapper {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+/* judul mengikuti posisi card */
+h2 {
+  max-width: 1000px;
+  margin: 40px auto 20px auto;
+  padding: 0 16px;
+}
+
+/* card tabel */
+.zakat-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+/* header tabel */
+.zakat-table thead {
+  background: #0f172a;
+  color: white;
+}
+
+/* cell */
+.zakat-table th,
+.zakat-table td {
+  padding: 14px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+/* =========================
+   MOBILE FIX
+========================= */
+@media (max-width: 768px) {
+
+  .table-wrapper {
+    margin: 25px auto;
+    padding: 0 12px;
+  }
+
+  h2 {
+    margin: 25px auto 15px auto;
+    padding: 0 12px;
+    font-size: 22px;
+  }
+
+  .zakat-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-radius: 14px;
+  }
+
+  .zakat-table th,
+  .zakat-table td {
+    padding: 12px 10px;
+    font-size: 13px;
+  }
+}
+
+/* AUTO RTL SAAT GOOGLE SET ARAB */
+html[lang="ar"] body {
+  direction: rtl;
+  text-align: right;
+}
+
+html[lang="ar"] .hero,
+html[lang="ar"] .navbar,
+html[lang="ar"] .quick-menu,
+html[lang="ar"] .article-content {
+  text-align: right;
+}
+
+/* Keterangan Fiqih - kolom terakhir */
+.zakat-table td:last-child {
+  text-align: justify;
+  line-height: 1.7;
+}
+
+/* Supaya judul kolom tetap tengah */
+.zakat-table th:last-child {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .zakat-table td:last-child {
+    text-align: left;
+  }
+}
+
+/* ============================= */
+/* SECTION FIQH */
+/* ============================= */
+
+.fiqh-section {
+  padding: 80px 20px;
+  background: linear-gradient(180deg, #f1f5ff, #ffffff);
+}
+
+/* Container biar gak mepet kiri kanan */
+.fiqh-container {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  gap: 40px;
+}
+
+/* ============================= */
+/* JUDUL H2 */
+/* ============================= */
+
+.fiqh-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 50px;
+  color: #1e3a8a;
+  font-weight: 700;
+  position: relative;
+}
+
+.fiqh-section h2::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #1e40af, #3b82f6);
+  display: block;
+  margin: 15px auto 0;
+  border-radius: 10px;
+}
+
+/* ============================= */
+/* CARD */
+/* ============================= */
+
+.fiqh-card {
+  background: linear-gradient(145deg, #ffffff, #f8fafc);
+  padding: 40px;
+  border-radius: 18px;
+
+  /* bayangan biru cakep */
+  box-shadow: 0 15px 40px rgba(30, 64, 175, 0.15);
+
+  transition: 0.3s ease;
+}
+
+.fiqh-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(30, 64, 175, 0.25);
+}
+
+/* ============================= */
+/* JUDUL DALAM CARD */
+/* ============================= */
+
+.fiqh-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 22px;
+  color: #1e3a8a;
+}
+
+/* ============================= */
+/* PARAGRAF */
+/* ============================= */
+
+.fiqh-card p {
+  margin-bottom: 20px;   /* JARAK ANTAR PARAGRAF */
+  line-height: 1.9;
+  color: #334155;
+  font-size: 1rem;
+  text-align: justify;
+}
+
+.fiqh-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================
+   FIQH IMAGE STYLE
+========================= */
+
+.fiqh-image {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  border-radius: 16px;
+  margin-bottom: 15px;
+}
+
+.fiqh-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.fiqh-card:hover .fiqh-image img {
+  transform: scale(1.05);
+}

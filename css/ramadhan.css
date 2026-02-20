@@ -642,7 +642,7 @@ body.dark .ramadhan-hero {
       rgba(2, 6, 23, 0.85),
       rgba(2, 6, 23, 0.95)
     ),
-    url("assets/images/kaaba.jpg") center/cover no-repeat;
+    url("../assets/images/kaaba.jpg") center/cover no-repeat;
 }
 
 body.dark .hero-sub {
@@ -811,3 +811,4 @@ html[lang="ar"] .quick-menu,
 html[lang="ar"] .article-content {
   text-align: right;
 }
+

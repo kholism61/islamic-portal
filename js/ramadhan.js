@@ -1,14 +1,54 @@
 const doaHarian = [
-  "Allahumma barik lana fi Ramadhan...",
-  "Ya Allah, kuatkan iman kami...",
-  "Ya Allah, jadikan puasa kami diterima...",
-  "Ya Allah, ampuni dosa kami...",
-  "Ya Allah, lapangkan rezeki kami...",
-  "Ya Allah, dekatkan kami dengan Al-Qur’an...",
-  "Ya Allah, lindungi kami dari neraka...",
-  "Ya Allah, jadikan kami hamba yang sabar...",
-  "Ya Allah, bersihkan hati kami...",
-  "Ya Allah, beri kami malam Lailatul Qadr..."
+{
+arab: "اللهم بارك لنا في رمضان وبلغنا ليلة القدر",
+id: "Ya Allah, berkahilah kami di bulan Ramadhan dan pertemukan kami dengan Lailatul Qadr.",
+en: "O Allah, bless us in Ramadan and allow us to reach Laylatul Qadr."
+},
+{
+arab: "اللهم قوِّ إيماننا وثبّت قلوبنا على دينك",
+id: "Ya Allah, kuatkan iman kami dan teguhkan hati kami di atas agama-Mu.",
+en: "O Allah, strengthen our faith and keep our hearts firm upon Your religion."
+},
+{
+arab: "اللهم تقبل صيامنا وقيامنا وسائر أعمالنا",
+id: "Ya Allah, terimalah puasa, shalat malam, dan seluruh amal kami.",
+en: "O Allah, accept our fasting, night prayers, and all our deeds."
+},
+{
+arab: "اللهم اغفر لنا ذنوبنا ما تقدم منها وما تأخر",
+id: "Ya Allah, ampunilah dosa-dosa kami yang telah lalu maupun yang akan datang.",
+en: "O Allah, forgive our past and future sins."
+},
+{
+arab: "اللهم وسّع علينا رزقنا وبارك لنا فيه",
+id: "Ya Allah, lapangkan rezeki kami dan berkahilah di dalamnya.",
+en: "O Allah, expand our sustenance and bless it."
+},
+{
+arab: "اللهم اجعلنا من أهل القرآن الذين هم أهلك وخاصتك",
+id: "Ya Allah, jadikan kami termasuk ahli Al-Qur'an yang Engkau muliakan.",
+en: "O Allah, make us among the people of the Qur’an, Your special servants."
+},
+{
+arab: "اللهم أجرنا من النار ونجّنا من عذابها",
+id: "Ya Allah, lindungi kami dari api neraka dan selamatkan kami dari azabnya.",
+en: "O Allah, protect us from the Hellfire and save us from its punishment."
+},
+{
+arab: "اللهم اجعلنا من الصابرين الشاكرين",
+id: "Ya Allah, jadikan kami hamba yang sabar dan pandai bersyukur.",
+en: "O Allah, make us among those who are patient and grateful."
+},
+{
+arab: "اللهم طهّر قلوبنا من النفاق وأعمالنا من الرياء",
+id: "Ya Allah, bersihkan hati kami dari kemunafikan dan amal kami dari riya.",
+en: "O Allah, purify our hearts from hypocrisy and our deeds from showing off."
+},
+{
+arab: "اللهم ارزقنا قيام ليلة القدر إيمانًا واحتسابًا",
+id: "Ya Allah, karuniakan kami kesempatan beribadah di malam Lailatul Qadr dengan iman dan keikhlasan.",
+en: "O Allah, grant us the blessing to worship on Laylatul Qadr with faith and sincerity."
+}
 ];
 
 function tampilkanDoaHarian() {
@@ -18,7 +58,11 @@ function tampilkanDoaHarian() {
   const day = new Date().getDate();
   const doa = doaHarian[day % doaHarian.length];
 
-  el.textContent = doa;
+  el.innerHTML = `
+    <div class="doa-arab">${doa.arab}</div>
+    <div class="doa-id">${doa.id}</div>
+    <div class="doa-en">${doa.en}</div>
+  `;
 }
 
 document.addEventListener("click", () => {
@@ -475,3 +519,4 @@ function autoNightMode() {
   }
 
 }
+

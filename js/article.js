@@ -3,8 +3,8 @@
 // =====================
 import { articlesData } from "./data.js";
 const isHomePage =
-  window.location.pathname === "/" ||
-  window.location.pathname.endsWith("index.html");
+  document.getElementById("articles-container") !== null &&
+  !new URLSearchParams(window.location.search).get("id");
 
 const isArticlePage =
   window.location.pathname.includes("article.html");
@@ -2117,3 +2117,4 @@ updateReadingStreak();
     </a>
   `).join("");
 })();
+

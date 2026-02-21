@@ -199,3 +199,26 @@ if (downloadAllBtn) {
   });
 }
 
+// ===============================
+// AUTO REFRESH SAAT DATA BERUBAH
+// ===============================
+
+// kalau localStorage berubah (tab lain update)
+window.addEventListener("storage", (e) => {
+  if (e.key === "readingProgress" || e.key === "offlineArticles") {
+    offlineData =
+      JSON.parse(localStorage.getItem("offlineArticles")) || {};
+
+    renderOfflineList(searchInput?.value || "");
+    updateOfflineStats();
+  }
+});
+
+// kalau user balik ke tab ini
+window.addEventListener("focus", () => {
+  offlineData =
+    JSON.parse(localStorage.getItem("offlineArticles")) || {};
+
+  renderOfflineList(searchInput?.value || "");
+  updateOfflineStats();
+});

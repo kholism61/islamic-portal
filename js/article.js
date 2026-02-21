@@ -2118,3 +2118,39 @@ updateReadingStreak();
   `).join("");
 })();
 
+// ================= ADVANCED FLOATING SCROLL =================
+
+let lastScrollY = window.scrollY;
+let ticking = false;
+
+const floating = document.querySelector(".floating-actions");
+const SHOW_AFTER = 150;     // muncul setelah 150px
+const SCROLL_SENSITIVITY = 8; // biar gak flicker
+
+function handleScroll() {
+  const currentY = window.scrollY;
+  const diff = currentY - lastScrollY;
+
+  // Jangan tampil di atas halaman
+  if (currentY < SHOW_AFTER) {
+    floating.classList.add("hide");
+  } else {
+    if (diff > SCROLL_SENSITIVITY) {
+      // Scroll turun → tampil
+      floating.classList.remove("hide");
+    } else if (diff < -SCROLL_SENSITIVITY) {
+      // Scroll naik → sembunyi
+      floating.classList.add("hide");
+    }
+  }
+
+  lastScrollY = currentY;
+  ticking = false;
+}
+
+window.addEventListener("scroll", () => {
+  if (!ticking) {
+    window.requestAnimationFrame(handleScroll);
+    ticking = true;
+  }
+});

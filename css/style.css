@@ -5745,4 +5745,15 @@ html[lang="ar"] .article-content {
 .wa-btn:focus {
   outline: none !important;
   box-shadow: 0 6px 18px rgba(0,0,0,0.25) !important;
+
+}
+
+.floating-actions {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.floating-actions.hide {
+  transform: translateY(120px);
+  opacity: 0;
+  pointer-events: none;
 }

@@ -5610,3 +5610,12 @@ html[lang="ar"] .article-content {
 #translation-select option {
   color: #111;
 }
+
+@media (max-width: 768px) {
+
+  #open-quran {
+    display: block;
+    margin: 25px auto;   /* Tengah + jarak atas bawah */
+  }
+
+}

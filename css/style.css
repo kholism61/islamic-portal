@@ -5597,12 +5597,19 @@ html[lang="ar"] .article-content {
 
 .floating-actions {
   position: fixed;
-  right: 25px;
-  bottom: 60px; /* naikkan sedikit */
+  right: 20px;
+  bottom: 20px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
   z-index: 999;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.floating-actions.hide {
+  transform: translateY(140px);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .floating-btn {
@@ -5748,12 +5755,4 @@ html[lang="ar"] .article-content {
 
 }
 
-.floating-actions {
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
 
-.floating-actions.hide {
-  transform: translateY(120px);
-  opacity: 0;
-  pointer-events: none;
-}

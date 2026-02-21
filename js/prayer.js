@@ -593,12 +593,12 @@ const ayatList = [
   {
     global: 3,
     arab: "َٱلَّذِينَ يُؤْمِنُونَ بِٱلْغَيْبِ وَيُقِيمُونَ ٱلصَّلَوٰةَ وَمِمَّا رَزَقْنَـٰهُمْ يُنفِقُونَ",
-    arti: "(Yaitu) mereka yang beriman kepada yang gaib, melaksanakan salat, dan menginfakkan1 sebagian rezeki yang Kami berikan kepada mereka,"
+    arti: "(Yaitu) mereka yang beriman kepada yang gaib, melaksanakan salat, dan menginfakkan sebagian rezeki yang Kami berikan kepada mereka,"
   },
   {
     global: 4,
     arab: "وَٱلَّذِينَ يُؤْمِنُونَ بِمَآ أُنزِلَ إِلَيْكَ وَمَآ أُنزِلَ مِن قَبْلِكَ وَبِٱلْـَٔاخِرَةِ هُمْ يُوقِنُونَ",
-    arti: "dan mereka beriman kepada (Alquran) yang diturunkan kepadamu (Muhammad) dan (kitab-kitab) yang telah diturunkan sebelum engkau,1 dan mereka yakin akan adanya akhirat."
+    arti: "dan mereka beriman kepada (Alquran) yang diturunkan kepadamu (Muhammad) dan (kitab-kitab) yang telah diturunkan sebelum engkau, dan mereka yakin akan adanya akhirat."
   },
   {
     global: 5,
@@ -973,4 +973,5 @@ if (navigator.geolocation) {
       }
     });
   });
+
 }

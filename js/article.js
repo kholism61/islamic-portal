@@ -7,7 +7,7 @@ const isHomePage =
   !new URLSearchParams(window.location.search).get("id");
 
 const isArticlePage =
-  window.location.pathname.includes("article.html");
+  document.getElementById("isi-artikel") !== null;
 
 let cards = [];
 let activeFilter = "all";
@@ -2117,4 +2117,5 @@ updateReadingStreak();
     </a>
   `).join("");
 })();
+
 

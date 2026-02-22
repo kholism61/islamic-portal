@@ -3479,7 +3479,7 @@ background: linear-gradient(
 
 #daily-ayah-arab {
   font-family: "Amiri", serif;
-  font-size: 28px;
+  font-size: 20px;
   line-height: 2.2;
   text-align: center;
   direction: rtl;
@@ -3489,7 +3489,7 @@ background: linear-gradient(
 }
 
 #daily-ayah-arti {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.8;
   text-align: center;     /* Tengah */
   direction: ltr;
@@ -5768,6 +5768,7 @@ html[lang="ar"] .article-content {
   box-shadow: 0 6px 18px rgba(0,0,0,0.25) !important;
 
 }
+
 
 
 

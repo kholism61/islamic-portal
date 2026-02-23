@@ -6126,14 +6126,22 @@ html[lang="ar"] .article-content {
   opacity: 1;
 }
 
-.offline-low {
-  background: linear-gradient(135deg,#2563eb,#06b6d4);
+/* default */
+.stat-card {
+  transition: all 0.3s ease;
 }
 
-.offline-mid {
-  background: linear-gradient(135deg,#059669,#34d399);
+/* LOW */
+.stat-card.offline-low {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
 }
 
-.offline-high {
-  background: linear-gradient(135deg,#d4a017,#facc15);
+/* MID */
+.stat-card.offline-mid {
+  background: linear-gradient(135deg, #7c2d12, #ea580c);
+}
+
+/* HIGH */
+.stat-card.offline-high {
+  background: linear-gradient(135deg, #14532d, #16a34a);
 }

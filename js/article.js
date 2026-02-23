@@ -2204,39 +2204,42 @@ updateReadingStreak();
 })();
 
 // ================= ADVANCED FLOATING SCROLL =================
+(function () {
 
-let lastScrollY = window.scrollY;
-let ticking = false;
+  const floating = document.querySelector(".floating-actions");
+  if (!floating) return; // ⛔ Kalau tidak ada (bukan index), stop di sini
 
-const floating = document.querySelector(".floating-actions");
-const SHOW_AFTER = 150;     // muncul setelah 150px
-const SCROLL_SENSITIVITY = 8; // biar gak flicker
+  let lastScrollY = window.scrollY;
+  let ticking = false;
 
-function handleScroll() {
-  const currentY = window.scrollY;
-  const diff = currentY - lastScrollY;
+  const SHOW_AFTER = 150;
+  const SCROLL_SENSITIVITY = 8;
 
-  // Jangan tampil di atas halaman
-  if (currentY < SHOW_AFTER) {
-    floating.classList.add("hide");
-  } else {
-    if (diff > SCROLL_SENSITIVITY) {
-      // Scroll turun → tampil
-      floating.classList.remove("hide");
-    } else if (diff < -SCROLL_SENSITIVITY) {
-      // Scroll naik → sembunyi
+  function handleScroll() {
+    const currentY = window.scrollY;
+    const diff = currentY - lastScrollY;
+
+    if (currentY < SHOW_AFTER) {
       floating.classList.add("hide");
+    } else {
+      if (diff > SCROLL_SENSITIVITY) {
+        // Scroll turun → tampil
+        floating.classList.remove("hide");
+      } else if (diff < -SCROLL_SENSITIVITY) {
+        // Scroll naik → sembunyi
+        floating.classList.add("hide");
+      }
     }
+
+    lastScrollY = currentY;
+    ticking = false;
   }
 
-  lastScrollY = currentY;
-  ticking = false;
-}
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(handleScroll);
+      ticking = true;
+    }
+  });
 
-window.addEventListener("scroll", () => {
-  if (!ticking) {
-    window.requestAnimationFrame(handleScroll);
-    ticking = true;
-  }
-
-});
+})();

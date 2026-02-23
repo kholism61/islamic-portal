@@ -6126,4 +6126,14 @@ html[lang="ar"] .article-content {
   opacity: 1;
 }
 
+.offline-low {
+  background: linear-gradient(135deg,#2563eb,#06b6d4);
+}
 
+.offline-mid {
+  background: linear-gradient(135deg,#059669,#34d399);
+}
+
+.offline-high {
+  background: linear-gradient(135deg,#d4a017,#facc15);
+}

@@ -1178,3 +1178,27 @@ body.dark .rec-cat {
 .referensi li {
   margin-bottom: 6px;
 }
+
+/* =====================
+   ARTICLE THUMBNAIL
+===================== */
+
+#article-thumb {
+  width: 100%;
+  max-width: 900px;      /* biar gak kepanjangan */
+  height: 420px;         /* tinggi tetap */
+  object-fit: cover;     /* biar crop rapi */
+  border-radius: 18px;
+  display: block;
+  margin: 20px auto 30px auto;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.12);
+}
+
+@media (max-width: 768px) {
+  #article-thumb {
+    height: 250px;
+    border-radius: 14px;
+  }
+}

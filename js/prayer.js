@@ -975,3 +975,58 @@ if (navigator.geolocation) {
   });
 
 }
+
+const openHadith = document.getElementById("open-hadith");
+const hadithPopup = document.getElementById("hadith-popup");
+const closeHadith = document.getElementById("hadith-close");
+const hadithBody = document.getElementById("hadith-body");
+const bookSelect = document.getElementById("book-select");
+const rangeInput = document.getElementById("hadith-range");
+const loadBtn = document.getElementById("load-hadith");
+
+openHadith.onclick = () => {
+  hadithPopup.classList.add("active");
+  loadHadith();
+};
+
+closeHadith.onclick = () => {
+  hadithPopup.classList.remove("active");
+};
+
+loadBtn.onclick = () => {
+  loadHadith(bookSelect.value, rangeInput.value);
+};
+
+async function loadHadith(book = "bukhari", range = "1-5") {
+
+  hadithBody.innerHTML = "Memuat hadis...";
+
+  try {
+    const res = await fetch(
+      `https://api.hadith.gading.dev/books/${book}?range=${range}`
+    );
+
+    const data = await res.json();
+    const hadiths = data.data.hadiths;
+
+    hadithBody.innerHTML = "";
+
+    hadiths.forEach(h => {
+
+      const div = document.createElement("div");
+      div.classList.add("hadith-card");
+
+      div.innerHTML = `
+        <h3>HR. ${data.data.name} No. ${h.number}</h3>
+        <div class="arab">${h.arab}</div>
+        <div class="translation">${h.id}</div>
+      `;
+
+      hadithBody.appendChild(div);
+    });
+
+  } catch (err) {
+    hadithBody.innerHTML = "Gagal memuat hadis.";
+  }
+}
+

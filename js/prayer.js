@@ -467,9 +467,6 @@ if (prayerTimes.fajr) {
   }
   azanAudio.play().catch(() => {});
 }
-setTimeout(() => {
-  lastPlayed = null;
-}, 60000);
 
 
       // 🔔 NOTIF MASUK WAKTU
@@ -1029,4 +1026,5 @@ async function loadHadith(book = "bukhari", range = "1-5") {
     hadithBody.innerHTML = "Gagal memuat hadis.";
   }
 }
+
 

@@ -455,8 +455,12 @@ if (isHomePage && popularContainer && typeof articlesData !== "undefined") {
         <img src="${thumb}" class="thumb" alt="${article.judul}">
         <span class="badge-popular">🔥 Populer</span>
         <span class="category">${article.kategori}</span>
-        <h3>${article.judul}</h3>
-        <p>${article.isi.replace(/<[^>]*>/g, "").slice(0, 120)}...</p>
+         <h3>${
+  (article.judul || "").length > 40
+    ? article.judul.slice(0, 40) + "…"
+    : article.judul
+}</h3>
+        <p>${article.isi.replace(/<[^>]*>/g, "").slice(0, 90)}...</p>
         <a href="article.html?id=${id}" class="read-more">Baca Selengkapnya</a>
         <span class="card-date">${tanggal}</span>
       `;
@@ -2234,4 +2238,5 @@ window.addEventListener("scroll", () => {
     window.requestAnimationFrame(handleScroll);
     ticking = true;
   }
+
 });

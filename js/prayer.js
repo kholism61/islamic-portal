@@ -443,31 +443,34 @@ if (prayerTimes.fajr) {
   // 🔊 AZAN
   const diffReal = nowMin - prayerMin;
 
-  if (
-    diffReal >= 0 &&
-    diffReal <= azanTolerance &&
-    alarmEnabled &&
-    azanEnabled &&
-    lastPlayed !== name
-  ) {
+if (
+  diffReal >= 0 &&
+  diffReal <= azanTolerance &&
+  alarmEnabled &&
+  azanEnabled &&
+  lastPlayed !== name
+) {
+  
 
-    lastPlayed = name;
-      const muadzin = muadzinSelect?.value || "mishary";
+  lastPlayed = name;
 
-      const src =
-        name === "fajr"
-          ? muadzinMap[muadzin].fajr
-          : muadzinMap[muadzin].normal;
+  const muadzin = muadzinSelect?.value || "mishary";
 
-      if (azanAudio) {
-  azanAudio.src = src;
-  azanAudio.currentTime = 0;
-  if (name === "fajr") {
-    azanAudio.volume = 1; // subuh selalu full
+  const src =
+    name === "fajr"
+      ? muadzinMap[muadzin].fajr
+      : muadzinMap[muadzin].normal;
+
+  if (azanAudio) {
+    azanAudio.src = src;
+    azanAudio.currentTime = 0;
+
+    if (name === "fajr") {
+      azanAudio.volume = 1;
+    }
+
+    azanAudio.play().catch(() => {});
   }
-  azanAudio.play().catch(() => {});
-}
-
 
       // 🔔 NOTIF MASUK WAKTU
       if (Notification.permission === "granted") {
@@ -1026,5 +1029,6 @@ async function loadHadith(book = "bukhari", range = "1-5") {
     hadithBody.innerHTML = "Gagal memuat hadis.";
   }
 }
+
 
 

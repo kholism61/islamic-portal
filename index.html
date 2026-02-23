@@ -667,6 +667,10 @@ dan refleksi pemikiran kontemporer
     </div>
 
     <button id="open-quran">📖 Baca Qur’an</button>
+     <button id="open-hadith" class="yellow-btn">
+  📜 Baca Hadis
+</button>
+
 
 
     <!-- CLOCK + NEXT -->
@@ -1040,6 +1044,33 @@ function googleTranslateElementInit() {
     <div class="quran-body" id="quran-body">
       <div class="loading">Memuat...</div>
     </div>
+
+  </div>
+</div>
+
+  <div id="hadith-popup" class="popup">
+  <div class="popup-content">
+
+    <div class="popup-header">
+      <h2>📜 Koleksi Hadis</h2>
+      <button id="hadith-close">✖</button>
+    </div>
+
+    <div class="hadith-controls">
+      <select id="book-select">
+        <option value="bukhari">Sahih Bukhari</option>
+        <option value="muslim">Sahih Muslim</option>
+        <option value="tirmidzi">Sunan Tirmidzi</option>
+        <option value="abu-dawud">Sunan Abu Dawud</option>
+        <option value="nasai">Sunan An-Nasa’i</option>
+        <option value="ibnu-majah">Ibnu Majah</option>
+      </select>
+
+      <input type="text" id="hadith-range" value="1-5" />
+      <button id="load-hadith">Load</button>
+    </div>
+
+    <div id="hadith-body"></div>
 
   </div>
 </div>

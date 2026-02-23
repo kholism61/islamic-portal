@@ -1872,14 +1872,36 @@ function renderLastReading() {
     <span class="category">${article.kategori}</span>
     <h3>${article.judul}</h3>
     <div class="reading-progress-bar">
-    <div class="reading-progress-fill" style="width:${progress[id]}%"></div>
-  </div>
+      <div class="reading-progress-fill" style="width:${progress[id]}%"></div>
+    </div>
     <p>Lanjutkan dari ${progress[id]}%</p>
     <a href="article.html?id=${id}" class="btn-premium">
       Lanjutkan Membaca
     </a>
   </div>
-`;
+  `;
+
+  // =====================
+// 🎨 AUTO COLOR CARD
+// =====================
+
+const card = container.querySelector(".last-reading-card");
+
+card.classList.remove(
+  "card-low",
+  "card-mid",
+  "card-high"
+);
+
+const percent = progress[id];
+
+if (percent < 40) {
+  card.classList.add("card-low");
+} else if (percent < 80) {
+  card.classList.add("card-mid");
+} else {
+  card.classList.add("card-high");
+}
 }
 
 
@@ -1898,27 +1920,41 @@ function refreshHomeWidgets() {
   updateHomeStats();
 }
 
-// saat tab aktif lagi
 window.addEventListener("focus", refreshHomeWidgets);
 
-// saat kembali dari halaman lain (mobile & desktop)
 document.addEventListener("visibilitychange", () => {
   if (!document.hidden) {
     refreshHomeWidgets();
   }
 });
 
-
 function updateHomeStats() {
   const offlineEl = document.getElementById("stat-offline");
+  const statBox = offlineEl?.closest(".stat-box"); // cuma ambil parent
 
   if (offlineEl) {
     const offline =
       JSON.parse(localStorage.getItem("offlineArticles")) || {};
-    offlineEl.textContent = Object.keys(offline).length;
+
+    const count = Object.keys(offline).length;
+    offlineEl.textContent = count;
+
+    // ===================
+    // 🎨 TAMBAH WARNA SAJA
+    // ===================
+    if (statBox) {
+      statBox.classList.remove("offline-low","offline-mid","offline-high");
+
+      if (count >= 20) {
+        statBox.classList.add("offline-high");
+      } else if (count >= 10) {
+        statBox.classList.add("offline-mid");
+      } else if (count >= 5) {
+        statBox.classList.add("offline-low");
+      }
+    }
   }
 }
-
 
 // =====================
 // READER STATS (GLOBAL)
@@ -1958,13 +1994,9 @@ function updateReaderStats() {
     totalMinutes += Math.round((percent / 100) * minutes);
   });
 
-  // artikel terakhir
-  let lastTitle = "–";
-  const lastId = ids[ids.length - 1];
-  if (lastId && articlesData?.[lastId]) {
-    lastTitle = articlesData[lastId].judul.slice(0, 18) + "...";
-  }
-
+  // =====================
+  // Update Text
+  // =====================
   const elArticles = document.getElementById("stat-articles");
   const elTime = document.getElementById("stat-time");
   const elLast = document.getElementById("stat-last");
@@ -1972,6 +2004,24 @@ function updateReaderStats() {
   if (elArticles) elArticles.textContent = articleCount;
   if (elTime) elTime.textContent = totalMinutes;
   if (elLast) elLast.textContent = lastTitle;
+
+  // =====================
+  // 🎨 Dynamic Color System
+  // =====================
+  section.classList.remove(
+    "reader-green",
+    "reader-blue",
+    "reader-gold",
+    "reader-default"
+  );
+
+  if (articleCount >= 5) {
+    section.classList.add("reader-green");
+  } else if (totalMinutes >= 30) {
+    section.classList.add("reader-blue");
+  } else {
+    section.classList.add("reader-default");
+  }
 }
 
 // ===============================
@@ -2154,3 +2204,4 @@ window.addEventListener("scroll", () => {
     ticking = true;
   }
 });
+

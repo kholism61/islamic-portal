@@ -1905,10 +1905,7 @@ if (percent < 40) {
 }
 
 
-// ===============================
-// AUTO SYNC TIAP 2 DETIK
-// ===============================
-setInterval(() => {
+setTimeout(() => {
   renderLastReading();
   updateReaderStats();
   updateHomeStats();
@@ -2225,3 +2222,4 @@ window.addEventListener("scroll", () => {
   }
 
 });
+

@@ -6025,3 +6025,105 @@ html[lang="ar"] .article-content {
 
 }
 
+.reader-default {
+  background: linear-gradient(135deg,#2c3e50,#34495e);
+}
+
+.reader-green {
+  background: linear-gradient(135deg,#1f8f4e,#2ecc71);
+}
+
+.reader-blue {
+  background: linear-gradient(135deg,#1f6fd1,#3498db);
+}
+
+.reader-gold {
+  background: linear-gradient(135deg,#d4a017,#f1c40f);
+}
+
+#reader-stats {
+  padding: 16px;
+  border-radius: 16px;
+  color: white;
+  transition: 0.4s ease;
+}
+
+/* ===== HOME STATS COLORS ===== */
+
+.home-default {
+  background: linear-gradient(135deg,#2c3e50,#34495e);
+}
+
+.home-green {
+  background: linear-gradient(135deg,#1f8f4e,#2ecc71);
+}
+
+.home-blue {
+  background: linear-gradient(135deg,#1f6fd1,#3498db);
+}
+
+.home-gold {
+  background: linear-gradient(135deg,#d4a017,#f1c40f);
+}
+
+.home-stat-box {
+  padding: 14px;
+  border-radius: 14px;
+  color: white;
+  transition: 0.4s ease;
+}
+
+/* =============================
+   🎨 AUTO PREMIUM CARD SYSTEM
+============================= */
+
+.card-low {
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
+  box-shadow:
+    0 12px 30px rgba(37, 99, 235, 0.35),
+    0 4px 10px rgba(0,0,0,0.12);
+}
+
+.card-mid {
+  background: linear-gradient(135deg, #059669, #34d399);
+  box-shadow:
+    0 12px 30px rgba(5, 150, 105, 0.35),
+    0 4px 10px rgba(0,0,0,0.12);
+}
+
+.card-high {
+  background: linear-gradient(135deg, #d4a017, #facc15);
+  box-shadow:
+    0 12px 35px rgba(212, 160, 23, 0.45),
+    0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Hover effect lebih smooth */
+.last-reading-card:hover {
+  transform: translateY(-5px) scale(1.015);
+}
+
+/* Shimmer effect tetap jalan */
+.card-low::before,
+.card-mid::before,
+.card-high::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.18),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card-low:hover::before,
+.card-mid:hover::before,
+.card-high:hover::before {
+  opacity: 1;
+}
+
+

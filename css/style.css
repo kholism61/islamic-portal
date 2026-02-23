@@ -5952,37 +5952,39 @@ html[lang="ar"] .article-content {
 }
 
 /* ================= MOBILE PERFECT ALIGN ================= */
+/* ================= PERFECT ALIGN MOBILE ================= */
 @media (max-width: 768px) {
 
   .prayer-controls-simple {
     display: flex;
-    align-items: center;        /* 🔥 bikin sejajar vertikal */
-    justify-content: center;
+    align-items: center;      /* 🔥 sejajar vertikal */
+    justify-content: space-between;
     gap: 12px;
   }
 
   #azan-toggle {
-    height: 48px;
-    padding: 0 18px;
-    font-size: 15px;
-    border-radius: 14px;
     flex: 1;
+    height: 48px;
+    border-radius: 14px;
+
     display: flex;
-    align-items: center;        /* 🔥 center isi tombol */
+    align-items: center;
     justify-content: center;
+
+    margin: 0;               /* 🔥 hapus margin aneh */
   }
 
-  #settings-toggle {
+  #settings-toggle,
+  #alarm-toggle {
     width: 48px;
     height: 48px;
     border-radius: 14px;
 
     display: flex;
-    align-items: center;        /* 🔥 center icon */
+    align-items: center;
     justify-content: center;
 
-    font-size: 18px;
-    padding: 0;
+    margin: 0;               /* 🔥 penting */
   }
 
 }
@@ -6022,3 +6024,4 @@ html[lang="ar"] .article-content {
   }
 
 }
+

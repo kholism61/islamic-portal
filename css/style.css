@@ -6194,4 +6194,67 @@ html[lang="ar"] .article-content {
   box-shadow:
     0 8px 30px rgba(255, 190, 0, 0.35),
     0 0 60px rgba(255, 215, 0, 0.4);
+
+}
+
+/* ======================================
+   HADITH POPUP — MOBILE FIX
+====================================== */
+@media (max-width: 768px) {
+
+  /* Overlay full screen */
+  .popup {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Box popup full mobile */
+  .popup-content {
+    width: 95%;
+    max-width: 95%;
+    height: 90vh;
+    overflow-y: auto;
+    border-radius: 18px;
+    padding: 18px;
+  }
+
+  /* Header rapikan */
+  .popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Controls rapikan */
+  .hadith-controls {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .hadith-controls select,
+  .hadith-controls input {
+    flex: 1;
+    min-width: 100px;
+  }
+
+  .hadith-controls button {
+    flex: 0 0 auto;
+  }
+
+  /* Body jangan overflow */
+  #hadith-body {
+    width: 100%;
+    overflow-wrap: break-word;
+  }
+
+  /* Arabic text biar tidak kepotong */
+  #hadith-body p,
+  #hadith-body div {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
 }

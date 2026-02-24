@@ -1196,19 +1196,42 @@ body.dark .rec-cat {
     0 10px 30px rgba(0,0,0,0.12);
 }
 
-/* ===============================
-   MOBILE IMAGE CLEAN (NO CROP)
-=================================*/
-@media (max-width: 768px) {
+/* ==========================================
+   MOBILE & SMALL TABLET FIX (≤ 728px)
+========================================== */
+@media (max-width: 728px) {
 
+  /* ===== Container Aman ===== */
+  .article-content {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  /* ===== Thumbnail Bersih (No Crop) ===== */
   #article-thumb {
     width: 100%;
-    height: auto;        /* biar proporsional */
     max-width: 100%;
-    object-fit: contain; /* jangan crop */
+    height: auto !important;       /* hapus tinggi tetap */
+    object-fit: contain !important; /* jangan crop */
+    margin: 16px 0;                /* hilangkan auto */
     border-radius: 14px;
-    margin: 16px 0;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  }
+
+  /* ===== Referensi Anti Melebar ===== */
+  .referensi {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .referensi a {
+    word-break: break-all; /* paksa link panjang turun */
+    font-size: 13px;
   }
 
 }
+
 

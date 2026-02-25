@@ -66,30 +66,22 @@ self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
+    caches.match(event.request).then(async (cached) => {
 
-      // 1️⃣ kalau ada di cache → langsung balikin
-      if (cachedResponse) {
-        return cachedResponse;
+      if (cached) return cached;
+
+      const response = await fetch(event.request);
+
+      // 🔥 INI PENTING
+      if (!response || response.status !== 200 || response.type !== "basic") {
+        return response;
       }
 
-      // 2️⃣ kalau tidak ada → ambil dari network
-      return fetch(event.request)
-        .then((networkResponse) => {
+      const cache = await caches.open(CACHE_NAME);
+      cache.put(event.request, response.clone());
 
-          // simpan ke cache untuk next time
-          return caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, networkResponse.clone());
-            return networkResponse;
-          });
-
-        })
-        .catch(() => {
-          // 3️⃣ kalau offline dan navigation
-          if (event.request.mode === "navigate") {
-            return caches.match("/index.html");
-          }
-        });
+      return response;
     })
   );
+
 });

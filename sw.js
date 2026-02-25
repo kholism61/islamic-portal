@@ -46,18 +46,37 @@ self.addEventListener("activate", event => {
   self.clients.claim();
 });
 
-// FETCH
-self.addEventListener("fetch", event => {
+// ===============================
+// FETCH (FIXED FAST VERSION)
+// ===============================
+self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
   event.respondWith(
-    caches.match(event.request).then(cached => {
-      return (
-        cached ||
-        fetch(event.request).catch(() =>
-          caches.match("./index.html")
-        )
-      );
+    caches.match(event.request).then((cachedResponse) => {
+
+      // 1️⃣ Kalau ada di cache → langsung balikin (cepat)
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+
+      // 2️⃣ Kalau tidak ada → ambil dari network
+      return fetch(event.request)
+        .then((networkResponse) => {
+
+          // Simpan ke cache untuk next time
+          return caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, networkResponse.clone());
+            return networkResponse;
+          });
+
+        })
+        .catch(() => {
+          // 3️⃣ Kalau benar-benar offline
+          if (event.request.mode === "navigate") {
+            return caches.match("/index.html");
+          }
+        });
     })
   );
 });

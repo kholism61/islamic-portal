@@ -6079,34 +6079,73 @@ html[lang="ar"] .article-content {
 /* =============================
    🎨 AUTO PREMIUM CARD SYSTEM
 ============================= */
+/* ===============================
+   LAST READING CARD – PREMIUM UI
+================================= */
 
+.last-reading-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  transition: all 0.35s cubic-bezier(.4,0,.2,1);
+  backdrop-filter: blur(12px);
+}
+
+/* ===============================
+   LOW (Blue Modern)
+================================= */
 .card-low {
-  background: linear-gradient(135deg, #2563eb, #06b6d4);
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.15), transparent 40%),
+    linear-gradient(145deg, #1e40af, #2563eb, #38bdf8);
+
   box-shadow:
-    0 12px 30px rgba(37, 99, 235, 0.35),
-    0 4px 10px rgba(0,0,0,0.12);
+    0 15px 35px rgba(37, 99, 235, 0.25),
+    0 4px 15px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255,255,255,0.25);
 }
 
+/* ===============================
+   MID (Emerald Smooth)
+================================= */
 .card-mid {
-  background: linear-gradient(135deg, #059669, #34d399);
+  background:
+    radial-gradient(circle at top right, rgba(255,255,255,0.15), transparent 45%),
+    linear-gradient(145deg, #047857, #059669, #6ee7b7);
+
   box-shadow:
-    0 12px 30px rgba(5, 150, 105, 0.35),
-    0 4px 10px rgba(0,0,0,0.12);
+    0 15px 35px rgba(5, 150, 105, 0.25),
+    0 4px 15px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255,255,255,0.25);
 }
 
+/* ===============================
+   HIGH (Gold Elegant)
+================================= */
 .card-high {
-  background: linear-gradient(135deg, #d4a017, #facc15);
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.2), transparent 45%),
+    linear-gradient(145deg, #b45309, #d4a017, #facc15);
+
   box-shadow:
-    0 12px 35px rgba(212, 160, 23, 0.45),
-    0 4px 12px rgba(0,0,0,0.15);
+    0 18px 45px rgba(212, 160, 23, 0.35),
+    0 6px 18px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255,255,255,0.3);
 }
 
-/* Hover effect lebih smooth */
+/* ===============================
+   HOVER EFFECT
+================================= */
 .last-reading-card:hover {
-  transform: translateY(-5px) scale(1.015);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 25px 60px rgba(0,0,0,0.25),
+    0 8px 25px rgba(0,0,0,0.18);
 }
 
-/* Shimmer effect tetap jalan */
+/* ===============================
+   SHIMMER LIGHT – LEBIH HALUS
+================================= */
 .card-low::before,
 .card-mid::before,
 .card-high::before {
@@ -6115,18 +6154,18 @@ html[lang="ar"] .article-content {
   inset: 0;
   background: linear-gradient(
     120deg,
-    transparent,
-    rgba(255,255,255,0.18),
-    transparent
+    transparent 30%,
+    rgba(255,255,255,0.22),
+    transparent 70%
   );
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  transform: translateX(-100%);
+  transition: transform 0.8s ease;
 }
 
 .card-low:hover::before,
 .card-mid:hover::before,
 .card-high:hover::before {
-  opacity: 1;
+  transform: translateX(100%);
 }
 
 /* default */
@@ -6302,3 +6341,4 @@ html[lang="ar"] .article-content {
   align-items: center;
   z-index: 9999;
 }
+

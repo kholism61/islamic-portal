@@ -2,7 +2,7 @@
    LITERATUR ISLAM — PRODUCTION SW
 ====================================== */
 
-const CACHE_VERSION = "v4";
+const CACHE_VERSION = "v5";
 const CACHE_NAME = `literatur-islam-${CACHE_VERSION}`;
 
 const PRECACHE_ASSETS = [
@@ -101,3 +101,4 @@ self.addEventListener("fetch", (event) => {
     })
   );
 });
+

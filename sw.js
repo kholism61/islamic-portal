@@ -1,4 +1,4 @@
-const CACHE_NAME = "literatur-islam-v1";
+const CACHE_NAME = "literatur-islam-v2";
 const OFFLINE_PAGE = "/offline.html";
 
 /* ================= INSTALL ================= */
@@ -70,3 +70,4 @@ self.addEventListener("fetch", (event) => {
   );
 
 });
+

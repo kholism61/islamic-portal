@@ -6409,5 +6409,27 @@ html[lang="ar"] .article-content {
   z-index: 9999;
 }
 
+/* =========================
+   MOBILE FIX STATS GRID
+========================= */
+@media (max-width: 768px) {
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 kolom */
+    gap: 14px;
+  }
+
+  .stats-grid .stat-box {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* box terakhir full width */
+  .stats-grid .stat-box:last-child {
+    grid-column: span 2;
+  }
+
+}
 
 

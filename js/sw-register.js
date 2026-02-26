@@ -1,39 +1,23 @@
-/* ======================================
-   SERVICE WORKER REGISTER — AUTO UPDATE
-====================================== */
-
 if ("serviceWorker" in navigator) {
 
   window.addEventListener("load", () => {
 
     navigator.serviceWorker.register("/sw.js")
-      .then((registration) => {
+      .then(reg => {
 
-        console.log("SW registered");
+        reg.addEventListener("updatefound", () => {
+          const newWorker = reg.installing;
 
-        // Detect update
-        registration.onupdatefound = () => {
-
-          const newWorker = registration.installing;
-
-          newWorker.onstatechange = () => {
-
-            if (
-              newWorker.state === "activated" &&
-              navigator.serviceWorker.controller
-            ) {
-              console.log("New version available — reloading...");
+          newWorker.addEventListener("statechange", () => {
+            if (newWorker.state === "activated" && navigator.serviceWorker.controller) {
               window.location.reload();
             }
+          });
 
-          };
-
-        };
+        });
 
       })
-      .catch((error) => {
-        console.error("SW registration failed:", error);
-      });
+      .catch(err => console.log("SW failed:", err));
 
   });
 

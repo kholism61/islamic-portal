@@ -997,7 +997,9 @@ dan refleksi pemikiran kontemporer
 <script>
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js");
+    navigator.serviceWorker.register("/sw.js")
+      .then(() => console.log("SW aktif"))
+      .catch(err => console.log("SW gagal:", err));
   });
 }
 </script>
@@ -1074,8 +1076,8 @@ function googleTranslateElementInit() {
 <script type="module" src="js/bookmark.js"></script>
 <script type="module" src="js/prayer.js"></script>
 <script src="js/translate.js"></script>
-<script src="js/sw-register.js"></script>
 
 </body>
 </html>
+
 

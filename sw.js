@@ -69,41 +69,35 @@ self.addEventListener("fetch", (event) => {
 
   if (event.request.method !== "GET") return;
 
-  // 🔥 Jangan ganggu Range request (audio/video)
+  // 🚫 JANGAN cache request dengan Range header
   if (event.request.headers.get("range")) return;
 
   event.respondWith(
-    (async () => {
+    caches.match(event.request).then(async (cached) => {
 
-      const cached = await caches.match(event.request);
       if (cached) return cached;
 
       try {
         const response = await fetch(event.request);
 
-        // Cache hanya response valid
-        if (
-          response &&
-          response.status === 200 &&
-          response.type === "basic"
-        ) {
-          const cache = await caches.open(CACHE_NAME);
-          cache.put(event.request, response.clone());
+        // 🚫 Jangan cache kalau bukan 200
+        if (!response || response.status !== 200 || response.type !== "basic") {
+          return response;
         }
+
+        const cache = await caches.open(CACHE_NAME);
+        await cache.put(event.request, response.clone());
 
         return response;
 
       } catch (error) {
 
-        // Fallback kalau offline
-        if (event.request.mode === "navigate") {
+        // fallback offline untuk halaman
+        if (event.request.destination === "document") {
           return caches.match("/offline.html");
         }
 
-        return new Response("Offline", { status: 503 });
       }
-
-    })()
+    })
   );
-
 });

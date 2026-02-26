@@ -1,104 +1,78 @@
-/* ======================================
-   LITERATUR ISLAM — PRODUCTION SW
-====================================== */
+const CACHE_NAME = "islamic-portal-v1";
 
-const CACHE_VERSION = "v5";
-const CACHE_NAME = `literatur-islam-${CACHE_VERSION}`;
-
-const PRECACHE_ASSETS = [
+const STATIC_ASSETS = [
   "/",
   "/index.html",
-  "/about.html",
-  "/faq.html",
-  "/kontak.html",
-  "/donasi.html",
-  "/bookmark.html",
   "/offline.html",
-  "/privacy.html",
-  "/disclaimer.html",
-
   "/css/style.css",
-
   "/js/data.js",
   "/js/article.js",
   "/js/bookmark.js",
   "/js/prayer.js",
-
+  "/js/translate.js",
   "/assets/images/logo.png"
 ];
 
-
-/* ===============================
-   INSTALL
-=============================== */
+/* ================= INSTALL ================= */
 self.addEventListener("install", (event) => {
+  self.skipWaiting();
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(PRECACHE_ASSETS))
-      .then(() => self.skipWaiting())
+    caches.open(CACHE_NAME).then(cache => cache.addAll(STATIC_ASSETS))
   );
 });
 
-
-/* ===============================
-   ACTIVATE
-=============================== */
+/* ================= ACTIVATE ================= */
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    (async () => {
-      const keys = await caches.keys();
-
-      await Promise.all(
-        keys.map((key) => {
+    caches.keys().then(keys =>
+      Promise.all(
+        keys.map(key => {
           if (key !== CACHE_NAME) {
             return caches.delete(key);
           }
         })
-      );
-
-      await self.clients.claim();
-    })()
+      )
+    )
   );
+  self.clients.claim();
 });
 
-
-/* ===============================
-   FETCH HANDLER
-=============================== */
+/* ================= FETCH ================= */
 self.addEventListener("fetch", (event) => {
 
   if (event.request.method !== "GET") return;
 
-  // 🚫 JANGAN cache request dengan Range header
-  if (event.request.headers.get("range")) return;
+  const request = event.request;
 
-  event.respondWith(
-    caches.match(event.request).then(async (cached) => {
+  // 🔥 HTML → NETWORK FIRST
+  if (request.headers.get("accept")?.includes("text/html")) {
 
-      if (cached) return cached;
-
-      try {
-        const response = await fetch(event.request);
-
-        // 🚫 Jangan cache kalau bukan 200
-        if (!response || response.status !== 200 || response.type !== "basic") {
+    event.respondWith(
+      fetch(request)
+        .then(response => {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
           return response;
+        })
+        .catch(() => caches.match(request).then(res => res || caches.match("/offline.html")))
+    );
+
+    return;
+  }
+
+  // 🔥 CSS / JS / IMG → STALE WHILE REVALIDATE
+  event.respondWith(
+    caches.match(request).then(cached => {
+
+      const fetchPromise = fetch(request).then(response => {
+        if (response && response.status === 200) {
+          caches.open(CACHE_NAME).then(cache => cache.put(request, response.clone()));
         }
-
-        const cache = await caches.open(CACHE_NAME);
-        await cache.put(event.request, response.clone());
-
         return response;
+      }).catch(() => cached);
 
-      } catch (error) {
-
-        // fallback offline untuk halaman
-        if (event.request.destination === "document") {
-          return caches.match("/offline.html");
-        }
-
-      }
+      return cached || fetchPromise;
     })
   );
-});
 
+});

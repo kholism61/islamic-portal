@@ -11,6 +11,18 @@ html, body {
   height: 100%;
 }
 
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* kasih jarak konten dari navbar */
+.page,
+.page-container {
+  padding-top: 40px;
+}
+
 /* =========================
    BASE PAGE LAYOUT
 ========================= */
@@ -1550,3 +1562,4 @@ html[lang="ar"] .article-content {
   transform: translateY(-2px);
   box-shadow: 0 8px 18px rgba(0, 70, 140, 0.35);
 }
+

@@ -1495,4 +1495,58 @@ html[lang="ar"] .navbar,
 html[lang="ar"] .quick-menu,
 html[lang="ar"] .article-content {
   text-align: right;
+
+}
+
+.paypal-btn {
+  display: inline-block;
+  padding: 14px 30px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #0070ba, #00457c);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 70, 140, 0.35);
+}
+
+.paypal-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0, 70, 140, 0.5);
+}
+
+.donation-note {
+  font-size: 13px;
+  opacity: 0.7;
+  margin-top: 8px;
+}
+
+/* Container preset */
+.preset-amounts {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+/* Tombol preset */
+.preset-amounts a {
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: #f1f5f9;
+  color: #0f172a;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.25s ease;
+  border: 1px solid #e2e8f0;
+}
+
+/* Hover effect */
+.preset-amounts a:hover {
+  background: linear-gradient(135deg, #0070ba, #00457c);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 70, 140, 0.35);
 }

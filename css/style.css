@@ -37,6 +37,19 @@ body::before {
   opacity: 0.04;
   pointer-events: none;
 }
+
+/* ===============================
+   MOBILE BACKGROUND FIX
+=============================== */
+
+@media (max-width: 768px) {
+
+  body::before {
+    background-size: 100vw;   /* ikut lebar layar */
+    background-position: center;
+  }
+
+}
 /* =====================
    NAVBAR
 ===================== */
@@ -6499,4 +6512,5 @@ html[lang="ar"] .article-content {
   color: #ffffff;
   font-weight: 800;
   text-shadow: 0 3px 10px rgba(0,0,0,0.35);
+
 }

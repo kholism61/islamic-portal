@@ -938,25 +938,61 @@ document.getElementById("resetTasbih").onclick = () => {
 
 
 // ==============================
-// KIBLAT VIA API (STABIL)
+// KIBLAT TANPA API (STABIL)
 // ==============================
 
+function getQiblaDirection(lat, lon) {
+  const kaabaLat = 21.4225 * Math.PI / 180;
+  const kaabaLon = 39.8262 * Math.PI / 180;
+
+  const userLat = lat * Math.PI / 180;
+  const userLon = lon * Math.PI / 180;
+
+  const dLon = kaabaLon - userLon;
+
+  const y = Math.sin(dLon);
+  const x =
+    Math.cos(userLat) * Math.tan(kaabaLat) -
+    Math.sin(userLat) * Math.cos(dLon);
+
+  let bearing = Math.atan2(y, x) * 180 / Math.PI;
+  return (bearing + 360) % 360;
+}
+
 function startCompass(qibla) {
+  const compass = document.getElementById("compass");
+
+  let currentRotation = 0;
 
   function handleOrientation(event) {
-    if (event.alpha !== null) {
-      const heading = event.webkitCompassHeading || event.alpha;
-      const rotate = qibla - heading;
+    let heading;
 
-      document.getElementById("compass").style.transform =
-        `rotate(${rotate}deg)`;
+    if (event.webkitCompassHeading !== undefined) {
+      // iOS
+      heading = event.webkitCompassHeading;
+    } else if (event.alpha !== null) {
+      // Android
+      heading = 360 - event.alpha;
+    } else {
+      return;
     }
+
+    let targetRotation = qibla - heading;
+
+    // normalisasi biar nggak lompat 360°
+    targetRotation = (targetRotation + 360) % 360;
+
+    // smoothing (biar halus)
+    currentRotation += (targetRotation - currentRotation) * 0.2;
+
+    compass.style.transform = `rotate(${currentRotation}deg)`;
   }
 
   // iOS permission
-  if (typeof DeviceOrientationEvent !== "undefined" &&
-      typeof DeviceOrientationEvent.requestPermission === "function") {
-
+  if (
+    typeof DeviceOrientationEvent !== "undefined" &&
+    typeof DeviceOrientationEvent.requestPermission === "function"
+  ) {
     DeviceOrientationEvent.requestPermission()
       .then(permissionState => {
         if (permissionState === "granted") {
@@ -964,36 +1000,22 @@ function startCompass(qibla) {
         }
       })
       .catch(console.error);
-
   } else {
-    // Android
-    window.addEventListener("deviceorientationabsolute", handleOrientation, true);
     window.addEventListener("deviceorientation", handleOrientation, true);
   }
 }
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(position => {
-
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
 
-    // 🔥 CALL API
-    fetch(`https://api.aladhan.com/v1/qibla/${lat}/${lon}`)
-      .then(res => res.json())
-      .then(data => {
+    const qibla = getQiblaDirection(lat, lon);
 
-        const qibla = data.data.direction;
+    document.getElementById("kiblatDegree").innerText =
+      "Derajat Kiblat: " + Math.round(qibla) + "°";
 
-        document.getElementById("kiblatDegree").innerText =
-          "Derajat Kiblat: " + Math.round(qibla) + "°";
-
-        startCompass(qibla);
-      })
-      .catch(err => {
-        console.error("API error:", err);
-      });
-
+    startCompass(qibla);
   });
 }
 
@@ -1050,6 +1072,7 @@ async function loadHadith(book = "bukhari", range = "1-5") {
     hadithBody.innerHTML = "Gagal memuat hadis.";
   }
 }
+
 
 
 

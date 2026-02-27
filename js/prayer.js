@@ -937,43 +937,64 @@ document.getElementById("resetTasbih").onclick = () => {
 };
 
 
-// ================= KIBLAT =================
-function getQiblaDirection(lat, lon) {
-  const kaabaLat = 21.4225;
-  const kaabaLon = 39.8262;
+// ==============================
+// KIBLAT VIA API (STABIL)
+// ==============================
 
-  const dLon = (kaabaLon - lon) * Math.PI / 180;
-  const y = Math.sin(dLon) * Math.cos(kaabaLat * Math.PI / 180);
-  const x =
-    Math.cos(lat * Math.PI / 180) * Math.sin(kaabaLat * Math.PI / 180) -
-    Math.sin(lat * Math.PI / 180) *
-    Math.cos(kaabaLat * Math.PI / 180) *
-    Math.cos(dLon);
+function startCompass(qibla) {
 
-  let brng = Math.atan2(y, x);
-  brng = brng * 180 / Math.PI;
-  return (brng + 360) % 360;
+  function handleOrientation(event) {
+    if (event.alpha !== null) {
+      const heading = event.webkitCompassHeading || event.alpha;
+      const rotate = qibla - heading;
+
+      document.getElementById("compass").style.transform =
+        `rotate(${rotate}deg)`;
+    }
+  }
+
+  // iOS permission
+  if (typeof DeviceOrientationEvent !== "undefined" &&
+      typeof DeviceOrientationEvent.requestPermission === "function") {
+
+    DeviceOrientationEvent.requestPermission()
+      .then(permissionState => {
+        if (permissionState === "granted") {
+          window.addEventListener("deviceorientation", handleOrientation);
+        }
+      })
+      .catch(console.error);
+
+  } else {
+    // Android
+    window.addEventListener("deviceorientationabsolute", handleOrientation, true);
+    window.addEventListener("deviceorientation", handleOrientation, true);
+  }
 }
 
 if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition((position) => {
+  navigator.geolocation.getCurrentPosition(position => {
+
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
-    const qibla = getQiblaDirection(lat, lon);
 
-    document.getElementById("kiblatDegree").innerText =
-      "Derajat Kiblat: " + Math.round(qibla) + "°";
+    // 🔥 CALL API
+    fetch(`https://api.aladhan.com/v1/qibla/${lat}/${lon}`)
+      .then(res => res.json())
+      .then(data => {
 
-    window.addEventListener("deviceorientationabsolute", (event) => {
-      if (event.alpha !== null) {
-        const heading = event.alpha;
-        const rotate = qibla - heading;
-        document.getElementById("compass").style.transform =
-          `rotate(${rotate}deg)`;
-      }
-    });
+        const qibla = data.data.direction;
+
+        document.getElementById("kiblatDegree").innerText =
+          "Derajat Kiblat: " + Math.round(qibla) + "°";
+
+        startCompass(qibla);
+      })
+      .catch(err => {
+        console.error("API error:", err);
+      });
+
   });
-
 }
 
 const openHadith = document.getElementById("open-hadith");
@@ -1029,6 +1050,7 @@ async function loadHadith(book = "bukhari", range = "1-5") {
     hadithBody.innerHTML = "Gagal memuat hadis.";
   }
 }
+
 
 
 

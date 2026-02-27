@@ -2,6 +2,18 @@
    DARK MODE
 ========================= */
 
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* kasih jarak konten dari navbar */
+.page,
+.page-container {
+  padding-top: 40px;
+}
+
 body.dark .legal-page {
   color: #d1d5db;
 }
@@ -138,3 +150,4 @@ html[lang="ar"] .quick-menu,
 html[lang="ar"] .article-content {
   text-align: right;
 }
+

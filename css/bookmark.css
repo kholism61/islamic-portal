@@ -1,3 +1,15 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* kasih jarak konten dari navbar */
+.page,
+.page-container {
+  padding-top: 40px;
+}
+
 .bookmark-nav {
   display: flex;
   align-items: center;
@@ -835,4 +847,5 @@ html[lang="ar"] .navbar,
 html[lang="ar"] .quick-menu,
 html[lang="ar"] .article-content {
   text-align: right;
+
 }

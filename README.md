@@ -5,7 +5,6 @@ Portal Islami modern berisi artikel fiqih, kalkulator zakat, dan berbagai tools 
 🌍 **Live Website:**  
 https://islamic-portal.vercel.app
 
----
 
 ## ✨ Features
 
@@ -17,7 +16,6 @@ https://islamic-portal.vercel.app
 - 🤖 SEO Friendly Structure
 - 📱 Mobile Responsive Design
 
----
 
 ## 🚀 Tech Stack
 
@@ -28,7 +26,6 @@ https://islamic-portal.vercel.app
 - Vercel Deployment
 - Service Worker (PWA)
 
----
 
 ## 📁 Project Structure
 
@@ -61,14 +58,12 @@ islamic-portal/
 ├── package.json           # Node utility config
 └── README.md
 
----
 
 ## 📌 Notes
 
 Project ini masih dalam pengembangan aktif.  
 Update artikel, fitur zakat, fitur mawaris, fitur falaq, fitur kalkulator datang bulan dan optimasi SEO akan terus dilakukan.
 
----
 
 ## 🤲 Purpose
 

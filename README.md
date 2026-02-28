@@ -3,7 +3,7 @@
 Portal Islami modern berisi artikel fiqih, kalkulator zakat, dan berbagai tools muslim berbasis web dengan performa tinggi, ringan, dan SEO optimized.
 
 🌍 **Live Website:**  
-https://your-domain.vercel.app
+https://islamic-portal.vercel.app
 
 ---
 

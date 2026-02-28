@@ -5705,4 +5705,5 @@ Seluruh ketentuan ini dibangun di atas dalil Al-Qur’an, Sunnah Nabi ﷺ, ijmak
 
 const articles = Object.values(articlesData);
 
+
 export { articlesData, articles };

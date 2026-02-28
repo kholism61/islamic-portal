@@ -1,6 +1,17 @@
 /* =========================
    OFFLINE PAGE STYLE
 ========================= */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* kasih jarak konten dari navbar */
+.page,
+.page-container {
+  padding-top: 40px;
+}
 
 .container {
   max-width: 900px;
@@ -400,4 +411,5 @@ html[lang="ar"] .article-content {
   border-radius: 999px;
   margin-bottom: 16px;
 }
+
 
